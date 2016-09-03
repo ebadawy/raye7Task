@@ -3,4 +3,5 @@ class Place < ApplicationRecord
 	validates :longitude,
 			  uniqueness: { scope: :latitude },
 			  presence: true
+	has_many :users
 end

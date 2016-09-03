@@ -8,6 +8,9 @@ class User < ApplicationRecord
 			  length: {minimum: 11, maximum: 14}
 	validate :validate_home_work_difference
 
+	belongs_to :home_place, class_name: 'Place'
+	belongs_to :work_place, class_name: 'Place'
+
 	def validate_home_work_difference
 		errors.add(:home_place, "can't be the same as work place") if home_place == work_place
 	end
