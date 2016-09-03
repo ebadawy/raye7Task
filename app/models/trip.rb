@@ -6,4 +6,6 @@ class Trip < ApplicationRecord
 	validates :seats,
 			  presence: true,
 			  numericality: true
+
+	belongs_to :driver, class_name: 'User'
 end
