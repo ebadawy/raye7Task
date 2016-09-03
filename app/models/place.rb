@@ -4,4 +4,5 @@ class Place < ApplicationRecord
 			  uniqueness: { scope: :latitude },
 			  presence: true
 	has_many :users
+	has_many :trips
 end
