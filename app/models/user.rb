@@ -10,7 +10,8 @@ class User < ApplicationRecord
 
 	belongs_to :home_place, class_name: 'Place'
 	belongs_to :work_place, class_name: 'Place'
-	has_many :trips
+	has_and_belongs_to_many :trips
+
 	belongs_to :group
 
 	def validate_home_work_difference

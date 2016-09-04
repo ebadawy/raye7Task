@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904021840) do
+ActiveRecord::Schema.define(version: 20160904144125) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 20160904021840) do
     t.index ["destination_id"], name: "index_trips_on_destination_id", using: :btree
     t.index ["driver_id"], name: "index_trips_on_driver_id", using: :btree
     t.index ["source_id"], name: "index_trips_on_source_id", using: :btree
+  end
+
+  create_table "trips_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "trip_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
