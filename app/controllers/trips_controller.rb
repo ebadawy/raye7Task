@@ -25,8 +25,9 @@ class TripsController < ApplicationController
 			@trip.join @user
 			render json: @trip, status: :ok, location: @trip
 		else
-			render json: status: :unprocessable_entity
+			render json: @trip.errors, status: :unprocessable_entity
 		end
+	end
 
 	#POST /trips/:id/leave
 	def leave
