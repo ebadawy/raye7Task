@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-	before_action :set_trip, only: [:join, :leave, :show]
+	before_action :set_trip, only: [:join, :leave, :show, :destroy]
 
 	# GET /trips?user_id=X
 	def index
@@ -43,6 +43,11 @@ class TripsController < ApplicationController
 	# GET /trip/:id
 	def show
 		render json: @trip, methods: :trip_users
+	end
+
+	# DELETE /trips/1
+	def destroy
+		@trip.destroy
 	end
 
 	private
