@@ -36,4 +36,8 @@ class Trip < ApplicationRecord
 		self.users.delete u
 		self.seats += 1
 	end
+
+	def trip_users
+		return self.users
+	end
 end

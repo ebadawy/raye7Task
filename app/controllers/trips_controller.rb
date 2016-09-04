@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-	before_action :set_trip, only: [:join, :leave]
+	before_action :set_trip, only: [:join, :leave, :show]
 
 	# GET /trips?user_id=X
 	def index
@@ -35,8 +35,13 @@ class TripsController < ApplicationController
 			@trip.leave @user
 			render json: @trip, status: :ok, location: @trip
 		else
-			render json: status: :unprocessable_entity
+			render json: @trip.errors, status: :unprocessable_entity
 		end
+	end
+
+	# GET /trip/:id
+	def show
+		render json: @trip, methods: :trip_users
 	end
 
 	private
