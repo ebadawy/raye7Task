@@ -26,7 +26,18 @@ class TripsController < ApplicationController
 			render json: @trip, status: :ok, location: @trip
 		else
 			render json: status: :unprocessable_entity
-		end	
+		end
+
+	#POST /trips/:id/leave
+	def leave
+		@user = User.find(params[:user_id])
+		if @trip.can_leave? @user
+			@trip.leave @user
+			render json: @trip, status: :ok, location: @trip
+		else
+			render json: status: :unprocessable_entity
+		end
+	end
 
 	private
 

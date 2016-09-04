@@ -22,8 +22,18 @@ class Trip < ApplicationRecord
 		return true
 	end
 
+	def can_leave? u
+		return true if self.users.include? u
+		return false
+	end
+
 	def join u
 		self.users << u
 		self.seats -= 1
+	end
+
+	def leave u
+		self.users.delete u
+		self.seats += 1
 	end
 end
