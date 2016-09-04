@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 		list_only.resources :groups
 		list_only.resources :trips
 	end
+
+	post '/trips/:id/join', to: 'trips#join'
+	post '/trips/:id/leave', to: 'trips#leave'
 end
